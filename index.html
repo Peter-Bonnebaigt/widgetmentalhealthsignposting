@@ -24,5 +24,15 @@
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
   <script src="script.js"></script>
 </body>
+
+  <script>
+    window.addEventListener("message", function(event) {
+        if (event.data.action === "toggleChatbot") {
+            let chatbotContainer = document.getElementById("chatbot-container");
+            chatbotContainer.style.display = chatbotContainer.style.display === "none" ? "block" : "none";
+        }
+    });
+</script>
+
 </html>
 
