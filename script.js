@@ -388,3 +388,46 @@ function animate() {
     renderer.render(scene, camera);
 }
 
+
+// Check if the page is being loaded inside an iframe
+if (window.self === window.top) {
+    console.log("Normal view - No floating button needed.");
+} else {
+    console.log("Embedded in an iframe - Adding floating widget.");
+
+    // Create floating chat button
+    let chatButton = document.createElement("div");
+    chatButton.id = "chatbot-button";
+    chatButton.innerHTML = "💬";
+    document.body.appendChild(chatButton);
+
+    // Toggle iframe visibility
+    let isOpen = false;
+    chatButton.addEventListener("click", () => {
+        window.parent.postMessage({ action: "toggleChatbot" }, "*");
+        isOpen = !isOpen;
+        chatButton.innerHTML = isOpen ? "❌" : "💬"; // Change icon
+    });
+
+    // Apply styles dynamically
+    let styles = document.createElement("style");
+    styles.innerHTML = `
+        #chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 24px;
+            line-height: 50px;
+            cursor: pointer;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+    `;
+    document.head.appendChild(styles);
+}
+
