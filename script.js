@@ -390,10 +390,8 @@ function animate() {
 
 
 // Check if the page is being loaded inside an iframe
-if (window.self === window.top) {
-    console.log("Normal view - No floating button needed.");
-} else {
-    console.log("Embedded in an iframe - Adding floating widget.");
+if (window.self !== window.top) { // Ensure it's inside an iframe
+    console.log("Embedded mode detected - Adding floating chat button.");
 
     // Create floating chat button
     let chatButton = document.createElement("div");
@@ -426,8 +424,8 @@ if (window.self === window.top) {
             line-height: 50px;
             cursor: pointer;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
         }
     `;
     document.head.appendChild(styles);
 }
-
