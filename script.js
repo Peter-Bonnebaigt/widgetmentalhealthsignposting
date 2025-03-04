@@ -392,7 +392,7 @@ function animate() {
 // Check if the page is being loaded inside an iframe
 if (window.self !== window.top) { // Ensure it's inside an iframe
     console.log("Embedded mode detected - Adding floating chat button.");
-
+/*
     // Create floating chat button
     let chatButton = document.createElement("div");
     chatButton.id = "chatbot-button";
@@ -406,7 +406,7 @@ if (window.self !== window.top) { // Ensure it's inside an iframe
         isOpen = !isOpen;
         chatButton.innerHTML = isOpen ? "❌" : "💬"; // Change icon
     });
-
+*/
     // Apply styles dynamically
     let styles = document.createElement("style");
     styles.innerHTML = `
